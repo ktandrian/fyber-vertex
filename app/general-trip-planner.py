@@ -8,7 +8,7 @@ import os
 import time
 from decouple import config
 from langchain_google_vertexai import VertexAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 import streamlit as st
 import vertexai
 
@@ -102,7 +102,7 @@ def LLM_init():
     model = VertexAI(model_name=MODEL,
                      max_output_tokens=2048,
                      response_mime_type="application/json")
-    prompt_from_template = PromptTemplate.from_template(template)
+    prompt_from_template = ChatPromptTemplate.from_template(template)
     chain = prompt_from_template | model
     return chain
 
