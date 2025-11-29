@@ -4,8 +4,10 @@ Demo for e-bukti potong data extraction using Google Vertex AI and Gemini model.
 """
 
 import json
+
 import streamlit as st
 from google.genai import types
+
 from lib.vertex_ai import get_vertex_ai_client
 
 MODEL = "gemini-2.0-flash-001"

@@ -19,7 +19,8 @@ from google.genai import types
 from tqdm import tqdm
 
 from lib.categorize_expense import CATEGORIES_MAP
-from lib.prompts import PROMPT_STAGE_1_EXTRACTION, get_stage_2_classification_prompt
+from lib.prompts import (PROMPT_STAGE_1_EXTRACTION,
+                         get_stage_2_classification_prompt)
 from lib.vertex_ai import get_vertex_ai_client
 
 # --- Configuration ---

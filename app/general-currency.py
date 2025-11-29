@@ -11,7 +11,6 @@ from currency_codes import get_currency_by_code
 from decouple import config
 from langchain_google_vertexai import HarmBlockThreshold, HarmCategory
 from vertexai import agent_engines
-# from vertexai.preview.reasoning_engines import LangchainAgent
 
 AGENT_ENGINE_ID = config("AGENT_ENGINE_ID", default="YOUR_AGENT_ENGINE_ID")
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")

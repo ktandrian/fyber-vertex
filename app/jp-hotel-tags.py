@@ -4,10 +4,12 @@ Demo for Google Gemini use case in hotel inventory management.
 """
 
 import time
+
 import requests
 import streamlit as st
 from bs4 import BeautifulSoup
 from google.genai import types
+
 from lib.vertex_ai import get_vertex_ai_client
 
 # Vertex AI Configurations

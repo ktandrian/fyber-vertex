@@ -4,6 +4,7 @@ The homepage of the Streamlit app, showing menus and links.
 """
 
 import streamlit as st
+
 from lib.pages_config import LEARN_MORE_LINKS, PAGES
 
 

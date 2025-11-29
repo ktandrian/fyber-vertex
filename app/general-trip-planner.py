@@ -6,11 +6,12 @@ Demo for Web UI generation using Google Vertex AI and Gemini Pro model.
 import json
 import os
 import time
-from decouple import config
-from langchain_google_vertexai import VertexAI
-from langchain_core.prompts import ChatPromptTemplate
+
 import streamlit as st
 import vertexai
+from decouple import config
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_google_vertexai import VertexAI
 
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
 REGION = "us-central1"
