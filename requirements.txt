@@ -7,7 +7,7 @@ streamlit==1.54.0
 google-cloud-aiplatform==1.138.0
 google-cloud-discoveryengine==0.17.0
 google-genai==1.64.0
-pandas==2.3.3
+pandas==3.0.1
 pydantic==2.12.5
 python-decouple==3.8
 tqdm==4.67.3
