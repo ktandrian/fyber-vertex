@@ -4,7 +4,7 @@ langchain==1.2.10
 langchain-community==0.4.1
 langchain-google-vertexai==3.2.2
 streamlit==1.54.0
-google-cloud-aiplatform==1.138.0
+google-cloud-aiplatform==1.139.0
 google-cloud-discoveryengine==0.17.0
 google-genai==1.64.0
 pandas==2.3.3
