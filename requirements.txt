@@ -1,6 +1,6 @@
 beautifulsoup4==4.14.3
 currency-codes==23.6.4
-langchain==1.2.17
+langchain==1.2.18
 langchain-community==0.4.1
 langchain-google-vertexai==3.2.3
 streamlit==1.57.0
