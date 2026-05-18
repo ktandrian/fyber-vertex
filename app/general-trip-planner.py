@@ -8,10 +8,9 @@ import os
 import time
 
 import streamlit as st
-import vertexai
 from decouple import config
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_google_vertexai import VertexAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
 REGION = "us-central1"
@@ -99,10 +98,13 @@ Output format:
 @st.cache_resource
 def LLM_init():
     """Initialize the VertexAI client and LLM chain."""
-    vertexai.init(project=PROJECT_ID, location=REGION)
-    model = VertexAI(model_name=MODEL,
-                     max_output_tokens=2048,
-                     response_mime_type="application/json")
+    model = ChatGoogleGenerativeAI(
+        model=MODEL,
+        project=PROJECT_ID,
+        location=REGION,
+        max_output_tokens=2048,
+        response_mime_type="application/json",
+    )
     prompt_from_template = ChatPromptTemplate.from_template(template)
     chain = prompt_from_template | model
     return chain
@@ -150,7 +152,7 @@ if prompt := st.chat_input():
             expanded=False,
         )
 
-    content = json.loads(msg)["result"]
+    content = json.loads(msg.content)["result"]
     st.session_state.messages_ai_trip.append({"role": "assistant", "content": content})
     st.chat_message("assistant").write(content, unsafe_allow_html=True)
 
