@@ -1,6 +1,7 @@
 # pylint: disable=invalid-name
 """
-Demo for Reasoning Engine use case using Google Vertex AI and Frankfurter API.
+Demo for Google Cloud Agent Runtime (Agent Engine) use case using Google Cloud
+Gemini Enterprise Agent Platform and Frankfurter API.
 """
 
 import datetime
@@ -9,13 +10,13 @@ import requests
 import streamlit as st
 from currency_codes import get_currency_by_code
 from decouple import config
-from langchain_google_vertexai import HarmBlockThreshold, HarmCategory
+from langchain_google_genai import HarmBlockThreshold, HarmCategory
 from vertexai import agent_engines
 
 AGENT_ENGINE_ID = config("AGENT_ENGINE_ID", default="YOUR_AGENT_ENGINE_ID")
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
 
-model = "gemini-2.0-flash"
+model = "gemini-2.5-flash"
 currencies = [
     "USD", "JPY", "BGN", "CZK", "DKK",
     "GBP", "HUF", "PLN", "RON", "SEK",
@@ -77,7 +78,7 @@ def get_exchange_rate(
     return response.json()
 
 # Development
-# agent = LangchainAgent(
+# agent = agent_engines.LangchainAgent(
 #     model=model,
 #     tools=[get_exchange_rate],
 #     model_kwargs=model_kwargs,
@@ -90,8 +91,8 @@ agent = agent_engines.get(
 st.set_page_config(page_title="Exchange Rate", page_icon="💰")
 st.title("Exchange Rate")
 st.markdown(
-    "The ultimate exchange rate checker powered by Google Vertex AI Reasoning Engine, "
-    "Langchain and Gemini model."
+    "The ultimate exchange rate checker powered by Google Cloud "
+    "Agent Runtime (Agent Engine), Langchain and Gemini model."
 )
 st.divider()
 

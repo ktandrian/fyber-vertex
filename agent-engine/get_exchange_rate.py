@@ -3,12 +3,12 @@
 import requests
 import vertexai
 from decouple import config
-from langchain_google_vertexai import HarmBlockThreshold, HarmCategory
+from langchain_google_genai import HarmBlockThreshold, HarmCategory
 from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import LangchainAgent
 
 DISPLAY_NAME = "Get Exchange Rate"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-2.5-flash"
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
 REGION = "us-central1"
 
