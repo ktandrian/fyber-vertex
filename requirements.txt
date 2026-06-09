@@ -6,7 +6,7 @@ langchain-google-genai==4.2.4
 streamlit==1.58.0
 google-cloud-aiplatform==1.156.0
 google-cloud-discoveryengine==0.20.0
-google-genai==2.7.0
+google-genai==2.8.0
 pandas==3.0.3
 pydantic==2.13.4
 python-decouple==3.8
