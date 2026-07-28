@@ -11,6 +11,6 @@ pandas==3.0.5
 pydantic==2.13.4
 python-decouple==3.8
 pyOpenSSL==26.3.0
-tqdm==4.69.0
+tqdm==4.70.0
 typing-inspect==0.9.0
 typing_extensions==4.16.0
