@@ -8,7 +8,7 @@ google-cloud-aiplatform==2.7.0
 google-cloud-discoveryengine==0.20.5
 google-genai==2.34.0
 pandas==3.1.0
-pydantic==2.14.2
+pydantic==2.14.3
 python-decouple==3.8
 pyOpenSSL==26.4.0
 tqdm==4.70.1
