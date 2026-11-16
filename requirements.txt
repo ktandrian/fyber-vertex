@@ -3,7 +3,7 @@ currency-codes==23.6.4
 langchain==1.4.9
 langchain-community==0.4.2
 langchain-google-genai==4.4.3
-streamlit==1.66.1
+streamlit==1.67.0
 google-cloud-aiplatform==2.9.0
 google-cloud-discoveryengine==0.20.7
 google-genai==2.34.0
