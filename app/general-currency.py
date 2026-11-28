@@ -6,12 +6,12 @@ Gemini Enterprise Agent Platform and Frankfurter API.
 
 import datetime
 
+import agentplatform
 import requests
 import streamlit as st
 from currency_codes import get_currency_by_code
 from decouple import config
 from langchain_google_genai import HarmBlockThreshold, HarmCategory
-from vertexai import agent_engines
 
 AGENT_ENGINE_ID = config("AGENT_ENGINE_ID", default="YOUR_AGENT_ENGINE_ID")
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
@@ -78,14 +78,16 @@ def get_exchange_rate(
     return response.json()
 
 # Development
-# agent = agent_engines.LangchainAgent(
+# from agentplatform.frameworks.langchain import LangchainAgent
+# agent = LangchainAgent(
 #     model=model,
 #     tools=[get_exchange_rate],
 #     model_kwargs=model_kwargs,
 # )
 # Production
-agent = agent_engines.get(
-    f"projects/{PROJECT_ID}/locations/us-central1/reasoningEngines/{AGENT_ENGINE_ID}"
+client = agentplatform.Client(project=PROJECT_ID, location="us-central1")
+agent = client.runtimes.get(
+    name=f"projects/{PROJECT_ID}/locations/us-central1/reasoningEngines/{AGENT_ENGINE_ID}"
 )
 
 st.set_page_config(page_title="Exchange Rate", page_icon="💰")

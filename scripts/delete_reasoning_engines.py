@@ -1,13 +1,14 @@
-"""Delete a reasoning engine in a project."""
+"""Delete an agent runtime in a project."""
 
-import vertexai
+import agentplatform
 from decouple import config
-from vertexai.preview.reasoning_engines import ReasoningEngine
 
 PROJECT_ID = config("PROJECT_ID", default="YOUR_PROJECT_ID")
-vertexai.init(project=PROJECT_ID, location="us-central1")
+LOCATION = "us-central1"
+client = agentplatform.Client(project=PROJECT_ID, location=LOCATION)
 
 # Change the Agent Engine ID
 REASONING_ENGINE_ID = "1234567890123456"
-reasoning_engine = ReasoningEngine(REASONING_ENGINE_ID)
-reasoning_engine.delete()
+client.runtimes.delete(
+    name=f"projects/{PROJECT_ID}/locations/{LOCATION}/reasoningEngines/{REASONING_ENGINE_ID}"
+)

@@ -1,11 +1,10 @@
-"""Deploy reasoning engine to Google Cloud Vertex AI"""
+"""Deploy agent runtime to Google Cloud Gemini Enterprise Agent Platform."""
 
+import agentplatform
 import requests
-import vertexai
+from agentplatform.frameworks.langchain import LangchainAgent
 from decouple import config
 from langchain_google_genai import HarmBlockThreshold, HarmCategory
-from vertexai import agent_engines
-from vertexai.preview.reasoning_engines import LangchainAgent
 
 DISPLAY_NAME = "Get Exchange Rate"
 MODEL = "gemini-2.5-flash"
@@ -62,24 +61,23 @@ def get_exchange_rate(
     return response.json()
 
 
-vertexai.init(
-    project=PROJECT_ID,
-    location=REGION,
-    staging_bucket="gs://reasoning-engines-staging"
-)
+client = agentplatform.Client(project=PROJECT_ID, location=REGION)
 
-# Deploy the reasoning engine
-remote_app = agent_engines.create(
-    LangchainAgent(
+# Deploy the agent runtime
+remote_app = client.runtimes.create(
+    agent=LangchainAgent(
         model=MODEL,
         tools=[get_exchange_rate],
         model_kwargs=model_kwargs,
     ),
-    requirements=[
-        "cloudpickle==3.1.1",
-        "google-cloud-aiplatform[agent_engines,langchain]",
-    ],
-    display_name=DISPLAY_NAME,
+    config={
+        "staging_bucket": "gs://reasoning-engines-staging",
+        "requirements": [
+            "cloudpickle==3.1.1",
+            "google-cloud-agentplatform[agent_engines,langchain]",
+        ],
+        "display_name": DISPLAY_NAME,
+    },
 )
 
-print(remote_app.resource_name)
+print(remote_app.api_resource.name)
