@@ -1,8 +1,8 @@
 beautifulsoup4==4.15.0
 currency-codes==23.6.4
-langchain==1.4.9
+langchain==1.5.2
 langchain-community==0.4.2
-langchain-google-genai==4.4.3
+langchain-google-genai==4.5.2
 streamlit==1.67.0
 google-cloud-agentplatform[agent_engines]==2.10.0
 google-cloud-discoveryengine==0.20.7
